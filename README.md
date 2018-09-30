@@ -6,7 +6,7 @@ An OpenRefine reconciliation service for the Getty's [Art & Architecture Thesaur
 
 Written a Sunday morning on the basis of [LC Reconcile](https://github.com/cmh2166/lc-reconcile). Probably buggy. Thank you for testing it. Commissions welcome.
 
-**Intructions copy-pasted from LC Reconcile**
+**Instructions copy-pasted from LC Reconcile**
 
 1. Clone/download/get a copy of this code repository on your computer.
 2. In the Command Line Interface, change to the directory where you downloaded this code: `cd directory/with/code/`
