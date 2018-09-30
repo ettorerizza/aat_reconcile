@@ -119,7 +119,7 @@ def search(raw_query):
             "type": query_type_meta
         }
         out.append(resource)
-    # Sort this list containing preflabels and crossrefs by score
+    # Sort this list containing prefterms by score
     sorted_out = sorted(out, key=itemgetter('score'), reverse=True)
     # Refine only will handle top 10 matches.
     return sorted_out[:10]
