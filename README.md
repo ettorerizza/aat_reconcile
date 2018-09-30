@@ -1,4 +1,4 @@
-##About
+**About**
 
 An OpenRefine reconciliation service for the Getty's [Art & Architecture Thesaurus](http://www.getty.edu/research/tools/vocabularies/aat/?find=&logic=AND&note=&page=1).
 
