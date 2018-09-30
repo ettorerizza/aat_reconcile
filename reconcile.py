@@ -17,16 +17,10 @@ import urllib
 import xml.etree.ElementTree as ET
 # Help text processing
 import text
-app = Flask(__name__)
-# If it's installed, use the requests_cache library to
 # cache calls to the API.
-try:
-    import requests_cache
-    requests_cache.install_cache('aat_cache')
-except ImportError:
-    app.logger.debug("No request cache found.")
-    pass
+requests_cache.install_cache('getty_cache')
 
+app = Flask(__name__)
 
 # See if Python 3 for unicode/str use decisions
 PY3 = version_info > (3,)
