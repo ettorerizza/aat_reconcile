@@ -4,7 +4,7 @@ An OpenRefine reconciliation service for the Getty's [Art & Architecture Thesaur
 
 **Tested with Python 3, but should work on python 2.**
 
-Written a Sunday morning on the basis of [LC Reconcile](https://github.com/cmh2166/lc-reconcile). Probably buggy. Thank you for testing it. Commissions welcome.
+Written a Sunday morning on the basis of [LC Reconcile](https://github.com/cmh2166/lc-reconcile). Probably buggy. Thank you for testing it. Commits are welcome.
 
 **Instructions copy-pasted from LC Reconcile**
 
