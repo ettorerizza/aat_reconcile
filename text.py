@@ -1,7 +1,7 @@
 """
 Taken from the Helmut project.
 https://github.com/okfn/helmut/blob/master/helmut/text.py
-In process of being reviewed, modified, for LoC optimization.
+In process of being reviewed, modified, for AAT optimization.
 """
 
 from unicodedata import normalize as ucnorm, category
