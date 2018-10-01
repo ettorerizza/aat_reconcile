@@ -17,6 +17,7 @@ import urllib
 import xml.etree.ElementTree as ET
 # Help text processing
 import text
+import requests_cache
 # cache calls to the API.
 requests_cache.install_cache('getty_cache')
 
