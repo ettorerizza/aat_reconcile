@@ -1,4 +1,6 @@
 *.pyc
 
 *.sqlite
-\idea
+.idea
+*.xml
+*.iml
