@@ -30,7 +30,7 @@ PY3 = version_info > (3,)
 # Create base URLs/URIs
 api_base_url = 'http://vocabsservices.getty.edu/AATService.asmx/AATGetTermMatch?term='
 
-aat_base_url = 'http://vocab.getty.edu/page/aat/{0}'
+aat_base_url = 'http://vocab.getty.edu/aat/{0}'
 
 # Map the AAT query indexes to service types
 default_query = {
@@ -47,23 +47,23 @@ full_query.append(default_query)
 # Make a copy of the AAT mappings.
 query_types = [{'id': item['id'], 'name': item['name']} for item in full_query]
 
-# Basic service metadata. There are a number of other documented options
-# but this is all we need for a simple service.
-metadata = {
-    "name": "Getty Reconciliation Service",
-    "defaultTypes": query_types,
-    "view": {
-        "url": "{{id}}"
-    }
-}
-
-
 def make_uri(getty_id):
     """
     Prepare an AAT url from the ID returned by the API.
     """
     getty_uri = aat_base_url.format(getty_id)
     return getty_uri
+
+# Basic service metadata. There are a number of other documented options
+# but this is all we need for a simple service.
+metadata = {
+    "name": "Getty Reconciliation Service",
+    "defaultTypes": query_types,
+    "view": {
+        "url": "http://vocab.getty.edu/aat/{{id}}"
+    }
+}
+
 
 
 def jsonpify(obj):
@@ -101,13 +101,13 @@ def search(raw_query):
         match = False
         name = re.sub(r'\[.+?\]', '', child.text.split(',')[0]).strip() 
         # the termid is NOT the ID ! We have to find it in the first prefrered parent
-        uri = make_uri(re.search(r"\[(.+?)\]", child.text.split(',')[0]).group(1))
+        id = re.search(r"\[(.+?)\]", child.text.split(',')[0]).group(1)
         score = fuzz.token_sort_ratio(query, name)
         if score > 95:
             match = True
-        app.logger.debug("Label is " + name + " Score is " + str(score) + " URI is " + uri)
+        app.logger.debug("Label is " + name + " Score is " + str(score) + " URI is " + id)
         resource = {
-            "id": uri,
+            "id": make_uri(id),
             "name": name,
             "score": score,
             "match": match,
@@ -118,7 +118,6 @@ def search(raw_query):
     sorted_out = sorted(out, key=itemgetter('score'), reverse=True)
     # Refine only will handle top 10 matches.
     return sorted_out[:10]
-
 
 
 @app.route("/", methods=['POST', 'GET'])
