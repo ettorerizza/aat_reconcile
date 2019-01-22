@@ -97,25 +97,31 @@ def search(raw_query):
     except getopt.GetoptError as e:
         app.logger.warning(e)
         return out
+    
     for child in results.iter('Preferred_Parent'):
         match = False
-        name = re.sub(r'\[.+?\]', '', child.text.split(',')[0]).strip() 
-        # the termid is NOT the ID ! We have to find it in the first prefrered parent
-        id = re.search(r"\[(.+?)\]", child.text.split(',')[0]).group(1)
-        score = fuzz.token_sort_ratio(query, name)
+        try:
+            name = re.sub(r'\[.+?\]', '', child.text.split(',')[0]).strip() 
+            # the termid is NOT the ID ! We have to find it in the first prefered parent
+            id = re.search(r"\[(.+?)\]", child.text.split(',')[0]).group(1)
+            score = fuzz.token_sort_ratio(query, name)
+        except AttributeError:
+            pass
         if score > 95:
             match = True
         app.logger.debug("Label is " + name + " Score is " + str(score) + " URI is " + id)
         resource = {
-            "id": make_uri(id),
+            "id": id,
             "name": name,
             "score": score,
             "match": match,
             "type": query_type_meta
         }
         out.append(resource)
+        
     # Sort this list containing prefterms by score
     sorted_out = sorted(out, key=itemgetter('score'), reverse=True)
+    
     # Refine only will handle top 10 matches.
     return sorted_out[:10]
 
@@ -139,6 +145,7 @@ def reconcile():
 
 
 if __name__ == '__main__':
+    
     from optparse import OptionParser
 
     oparser = OptionParser()
