@@ -59,6 +59,8 @@ def make_uri(getty_id):
 metadata = {
     "name": "Getty Reconciliation Service",
     "defaultTypes": query_types,
+    "identifierSpace" : "http://localhost/identifier",
+    "schemaSpace" : "http://localhost/schema",
     "view": {
         "url": "http://vocab.getty.edu/aat/{{id}}"
     }
