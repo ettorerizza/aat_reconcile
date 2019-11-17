@@ -1,4 +1,4 @@
-DEPRECATED : Getty has now its own [OpenRefine reconciliation service](https://www.getty.edu/research/tools/vocabularies/obtain/getty_vocabularies_openrefine_tutorial.pdf) with AAT, ULAN and TGN.
+**DEPRECATED : Getty has now its own [OpenRefine reconciliation service](https://www.getty.edu/research/tools/vocabularies/obtain/getty_vocabularies_openrefine_tutorial.pdf) with AAT, ULAN and TGN.
 
 **About**
 
