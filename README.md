@@ -1,3 +1,5 @@
+DEPRECATED : Getty has now its own [OpenRefine reconciliation service](https://www.getty.edu/research/tools/vocabularies/obtain/getty_vocabularies_openrefine_tutorial.pdf) with AAT, ULAN and TGN.
+
 **About**
 
 An OpenRefine reconciliation service for the Getty's [Art & Architecture Thesaurus](http://www.getty.edu/research/tools/vocabularies/aat/?find=&logic=AND&note=&page=1).
